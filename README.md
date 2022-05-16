@@ -75,3 +75,50 @@ const zap = (n) => {
   zap(n - 2);
 }
 ```
+
+```javascript
+/*
+  Time complexity:  O(n^2)
+  Space complexity: O(n)
+*/
+const unique = (array) => {
+  const newArray = [];
+
+  // Time: O(n)
+  for (let i = 0; i < array.length; i++) {
+    const ele = array[i];
+    /*
+      In general searching through an array would require a linear scan. 
+      It would have to technically iterate through the array to check does it include the given element.
+    */
+    // Time: O(n)
+    if (!newArray.includes(ele)) {
+      newArray.push(ele);
+    }
+  }
+
+  return newArray;
+}
+
+/*
+  Time complexity:  O(n + n) -> simplest form: O(n)
+  Space complexity: O(n)
+*/
+// Better solution
+const unique = (array) => {
+  const onlyUniques = new Set();
+  
+  // Time: O(n)
+  for (let i = 0; i < array.length; i++) {
+    const ele = array[i];
+    /*
+      Adding an element into a set because it's a hashed data structure is going to give you a constant time operation
+      In short: Inserting into a set is constant time
+    */
+    onlyUniques.add(ele); 
+  }
+  
+  // Converts the set into array: Time: O(n)
+  return Array.from(onlyUniques);
+}
+```
