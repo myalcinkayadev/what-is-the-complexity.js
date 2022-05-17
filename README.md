@@ -148,3 +148,32 @@ const bar = (array) => {
 
 bar([3, 5, 1, 4, 7]); // 21
 ```
+
+```javascript
+/*
+  O(log(n)) - logarithmic example
+*/
+
+const fun = (n) => {
+  while (n > 1) {
+    console.log(n);
+    n /= 2;
+  }
+  console.log('done');
+}
+
+fun(32);
+
+// recursive approach
+const foo = (n) => {
+  if (n <= 1) {
+    console.log("hooray");
+    return;
+  }
+
+  console.log(n);
+  foo(n / 2);
+}
+
+foo(30);
+```
