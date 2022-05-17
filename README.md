@@ -177,3 +177,25 @@ const foo = (n) => {
 
 foo(30);
 ```
+
+```javascript
+/*
+  O(n) - linear example
+*/
+
+let foo = (array) => {
+  for (let i = 0; i < array.length; i++) {
+    console.log(array[i]);
+  }
+}
+
+foo(["A ga maeba,", "kuwashime", "yoinikeri"]);
+
+let bar = (n) => {
+  if (n === 0) return;
+  console.log(n);
+  bar(n - 1);
+};
+
+bar(42);
+```
