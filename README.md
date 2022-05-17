@@ -126,6 +126,7 @@ const unique = (array) => {
 ```javascript
 /*
   O(1) example
+  - The number of steps does not depend on the input size
 */
 
 const foo = (n) => {
@@ -152,6 +153,7 @@ bar([3, 5, 1, 4, 7]); // 21
 ```javascript
 /*
   O(log(n)) - logarithmic example
+  - The number of steps can be expressed as a logarithm on the input size
 */
 
 const fun = (n) => {
@@ -198,4 +200,41 @@ let bar = (n) => {
 };
 
 bar(42);
+```
+
+```javascript
+ /*
+  O(n * log(n)) - loglinear example
+  - Has linear behavior nested in logsteps
+  - Bigger than O(n) but smaller than O(n^2)
+*/
+
+const bar = (str) => {
+  console.log(str);
+  if (str.length <= 1) return;
+  const midIdx = Math.floor(str.length / 2);
+  // slice -> O(n/2): operate on the original input string and gives you a new copy of that string
+  bar(str.slice(0, midIdx));
+}
+
+bar('abcdefghiklmnopqrstuvwxyz');
+
+const foo = (array) => {
+  let str = "";
+  for (let i = 0; i < array.length; i++) {
+    str += array[i];
+  }
+  console.log(str);
+  console.log('--------');
+
+  if (array.length <= 1) return;
+
+  const midIdx = Math.floor(array.length / 2);
+  const left = array.slice(0, midIdx);
+  const right = array.slice(midIdx);
+  foo(left);
+  foo(right);
+}
+
+foo(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']);
 ```
