@@ -122,3 +122,29 @@ const unique = (array) => {
   return Array.from(onlyUniques);
 }
 ```
+
+```javascript
+/*
+  O(1) example
+*/
+
+const foo = (n) => {
+  const result = 0;
+
+  // O(5) -> simplest O(1)
+  for (let i = 0; i < 5; i++) {
+    result += n;
+  }
+
+  return result;
+}
+
+foo(4); // 20
+
+const bar = (array) => {
+  // accessing a single element of an array directly is going to run constant time
+  return array[0] * array[array.length - 1];
+}
+
+bar([3, 5, 1, 4, 7]); // 21
+```
